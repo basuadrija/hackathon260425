@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: patient-service-deployment
+  labels:
+    app: patient-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: patient-service
+  template:
+    metadata:
+      labels:
+        app: patient-service
+    spec:
+      containers:
+      - name: patient-service
+        image: 539935451710.dkr.ecr.us-east-1.amazonaws.com/hackathon-adrija-repo:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: SERVICE
+          value: "patient"
+
