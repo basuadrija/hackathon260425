@@ -14,7 +14,7 @@ data "aws_availability_zones" "available" {
 }
 
 locals {
-  cluster_name = "education-eks-${random_string.suffix.result}"
+  cluster_name = "hackathon-adrija-${random_string.suffix.result}"
 }
 
 resource "random_string" "suffix" {
@@ -26,7 +26,7 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "5.8.1"
 
-  name = "education-vpc"
+  name = "hackathon-adrija-vpc"
 
   cidr = "172.0.0.0/16"
   azs  = slice(data.aws_availability_zones.available.names, 0, 3)
